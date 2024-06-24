@@ -226,7 +226,24 @@
         </defs>
       </svg>
       <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <p>Your todolist:</p>
+      <p>
+        <input #task />
+        <button (click)="addTask(task.value)" >add Task</button>
+      </p>
+      @for(task of tasks; track $index){
+        <p>
+            <input type="checkbox" (change)="toggleStatus($index)"> 
+            @if(task.status){
+              <s>{{ task.heading }}</s>
+            }@else{
+              {{ task.heading }}
+            }
+        </p>
+      }@empty{
+        <p>No task is created!</p>
+      }
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

@@ -11,4 +11,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'todos';
+  tasks: Array<{status:Boolean, heading:string}> = [];
+  addTask(heading:string){
+    this.tasks.push({status:false, heading:heading});
+  }
+  toggleStatus(index:number){
+    this.tasks[index].status = !this.tasks[index].status;
+  }
 }
